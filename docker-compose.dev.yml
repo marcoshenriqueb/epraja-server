@@ -1,0 +1,16 @@
+version: '3'
+services:
+    backend:
+        image: juxer2.0
+        environment:
+            DB_URL: "3306"
+        volumes:
+            - /var/www/node/tapster-server/:/code
+        links:
+            - mongo
+        ports:
+            - "3030:3030"
+    mongo:
+        image: mongo
+        volumes:
+            - ~/.mongodb:/data/db
