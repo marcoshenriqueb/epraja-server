@@ -3,7 +3,7 @@ const commonHooks = require('feathers-hooks-common');
 
 module.exports = {
   before: {
-    all: [ commonHooks.disallow() ],
+    all: [ commonHooks.disallow('rest', 'socketio') ],
     find: [ authenticate('jwt') ],
     get: [ authenticate('jwt') ],
     create: [],
