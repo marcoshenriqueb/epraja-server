@@ -5,5 +5,30 @@
   "paginate": {
     "default": 10,
     "max": 50
-  }
+  },
+  "authentication": {
+    "secret": "15ee7fa6456d8e9032c69e0cb8af1a2a146ed714247a9abafb290d86026fda7115f0e0b4c187a4da7bcf0cf851e166754a1f861d0c3e49f50346703763f3e4da53b443c2796b03588c64d39d4d3fba62b296b4010d237437f86fead1ec881704b8cfaf5218f7da81397a212a242455782a2cd70f86e398f9c06e80c3df15e6363934e8845e1d2e9fbfb5350033d7be4999d3c83471bc9aaae43d5961e4c146f11aada39ff17f6925568821bf90ca95d00a62896e880569dff2c4e2ea991a1eb2102001ba5dd98a9531284d95e37d7178f2e94653d53c3ca12d2df381bdc1fd3a70385470fd016a6932e79d15c4b1cca17e3a6d2203f9b963d7aa6a8a6de3cd33",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "type": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    }
+  },
+  "mongodb": "mongodb://mongo:27017/tapster"
 }
