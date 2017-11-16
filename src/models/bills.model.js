@@ -17,10 +17,19 @@ module.exports = function (app) {
       ref: 'businesses',
       required: true
     },
-    menuItems: [{
-      type: mongooseClient.Schema.Types.ObjectId,
-      ref: 'menu-items'
-    }],
+    menuItems: [
+      {
+        menuItem: {
+          type: mongooseClient.Schema.Types.ObjectId,
+          ref: 'menu-items'
+        },
+        quantity: { type: Number, required: true },
+        itemStatus: {
+          type: mongooseClient.Schema.Types.ObjectId,
+          ref: 'menu-item-statuses'
+        }
+      }
+    ],
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
   });

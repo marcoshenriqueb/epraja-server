@@ -9,6 +9,7 @@ module.exports = function (app) {
     name: { type: String, required: true },
     description: { type: String, required: true },
     price: { type: Number, required: true },
+    picture: { type: String, required: true },
     menuCategory: {
       type: mongooseClient.Schema.Types.ObjectId,
       ref: 'menu-categories',
