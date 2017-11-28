@@ -4,6 +4,7 @@ const compress = require('compression');
 const cors = require('cors');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
 
 const feathers = require('feathers');
 const configuration = require('feathers-configuration');
@@ -32,6 +33,7 @@ app.use(helmet());
 app.use(compress());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(fileUpload());
 app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 // Host the public folder
 app.use('/', feathers.static(app.get('public')));
@@ -42,6 +44,10 @@ app.configure(mongoose);
 app.configure(rest());
 app.configure(socketio());
 
+app.use(function(req, res, next) {
+  req.feathers.files = req.files || {};
+  next();
+});
 // Configure other middleware (see `middleware/index.js`)
 app.configure(middleware);
 app.configure(authentication);

@@ -1,26 +1,31 @@
 const path = require('path');
 const fs = require('fs');
-const formidable = require('formidable');
+var mkdirp = require('mkdirp');
 
 module.exports = function (options = {}) {
   return function fileUpload (hook) {
-    // console.log(hook.app.request);
-    if(hook.method === 'patch' && hook.type === 'before' && hook.id && hook.data[options.fieldName]) {
-      const form = new formidable.IncomingForm();
-      form.uploadDir = path.join(__dirname, '/../uploads/', options.path.replace(':id', hook.id));
-      form.keepExtensions = true;
+    if(hook.method === 'patch' && hook.type === 'before' && hook.id && hook.params.files[options.fieldName]) {
+      const file = hook.params.files[options.fieldName];
+      const publicPath = options.path.replace(':id', hook.id) || '';
+      const pathName = path.join(__dirname, '../../public', publicPath);
+      const fileName = `${+ new Date()}${path.extname(file.name)}`;
+      
+      const mv = () => {
+        file.mv(path.join(pathName, fileName), function(err) {
+          if (err) Promise.reject(err);
+        });
+      };
 
-      form.on('file', function(field, file) {
-        fs.rename(file.path, path.join(form.uploadDir, + new Date()));
-      });
-
-      form.on('error', function(err) {
-        console.log('An error has occured: \n' + err);
-      });
-
-      form.parse(hook.app.request, function(err, fields) {
-        console.log(fields);
-      });
+      if (!fs.existsSync(pathName)){
+        mkdirp(pathName, function(err) {
+          if (err) Promise.reject(err);
+          mv();
+        });
+      } else {
+        mv();
+      }
+      
+      hook.data[options.fieldName] = path.join(publicPath, fileName);
     }
     // Hooks can either return nothing or a promise
     // that resolves with the `hook` object for asynchronous operations
