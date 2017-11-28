@@ -8,8 +8,8 @@ module.exports = {
     find: [ authenticate('jwt') ],
     get: [ authenticate('jwt') ],
     create: [ commonHooks.disallow('rest', 'socketio') ],
-    update: [ authenticate('jwt') ],
-    patch: [ fileUpload({ 
+    update: [ commonHooks.disallow('rest', 'socketio') ],
+    patch: [ authenticate('jwt'), fileUpload({ 
       path: 'businesses/:id/picture',
       fieldName: 'picture'
     }) ],
