@@ -14,7 +14,7 @@ module.exports = function (app) {
     },
     description: { type: String, required: true },
     price: { type: Number, required: true },
-    picture: { type: String, required: true },
+    picture: { type: String, required: false },
     menuCategory: {
       type: mongooseClient.Schema.Types.ObjectId,
       ref: 'menu-categories',

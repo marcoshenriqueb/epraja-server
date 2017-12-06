@@ -21,12 +21,14 @@ module.exports = function (app) {
       {
         menuItem: {
           type: mongooseClient.Schema.Types.ObjectId,
-          ref: 'menu-items'
+          ref: 'menu-items',
+          required: true
         },
         quantity: { type: Number, required: true },
         itemStatus: {
           type: mongooseClient.Schema.Types.ObjectId,
-          ref: 'menu-item-statuses'
+          ref: 'menu-item-statuses',
+          required: true
         }
       }
     ],
