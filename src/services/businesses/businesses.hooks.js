@@ -5,8 +5,8 @@ const fileUpload = require('./../../hooks/file-upload');
 module.exports = {
   before: {
     all: [],
-    find: [ authenticate('jwt') ],
-    get: [ authenticate('jwt') ],
+    find: [],
+    get: [],
     create: [ commonHooks.disallow('rest', 'socketio') ],
     update: [ commonHooks.disallow('rest', 'socketio') ],
     patch: [ authenticate('jwt'), fileUpload({ 
