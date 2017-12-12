@@ -16,7 +16,7 @@ module.exports = function (app) {
       ref: 'survey-rates',
       required: true
     },
-    details: { type: String, required: false },
+    detail: { type: String, required: false },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
   });
