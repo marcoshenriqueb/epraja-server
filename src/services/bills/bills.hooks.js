@@ -1,9 +1,11 @@
+const uniqueTogether = require('./../../hooks/unique-together');
+
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [ uniqueTogether({ field: 'table', together: 'business', service: 'bills' }) ],
     update: [],
     patch: [],
     remove: []
