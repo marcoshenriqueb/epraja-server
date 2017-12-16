@@ -10,7 +10,14 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
     
     const query = {};
     query[options.field] = hook.data[options.field];
-    query[options.together] = hook.data[options.together];
+    if (typeof options.together === 'string') {
+      query[options.together] = hook.data[options.together];
+    } else {
+      options.together.forEach((t) => {
+        query[t] = hook.data[t];
+      });
+    }
+
     return hook.app.service(options.service).find({ query }).then((bills) => {
       if (bills.total) {
         throw new errors.Unprocessable(

@@ -5,7 +5,7 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [ uniqueTogether({ field: 'table', together: 'business', service: 'bills' }) ],
+    create: [ uniqueTogether({ field: 'table', together: ['business', 'billStatus'], service: 'bills' }) ],
     update: [],
     patch: [],
     remove: []
