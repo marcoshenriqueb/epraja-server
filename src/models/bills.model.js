@@ -24,7 +24,6 @@ module.exports = function (app) {
           ref: 'menu-items',
           required: true
         },
-        quantity: { type: Number, required: true },
         itemStatus: {
           type: mongooseClient.Schema.Types.ObjectId,
           ref: 'menu-item-statuses',
