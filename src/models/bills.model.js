@@ -1,5 +1,5 @@
 // bills-model.js - A mongoose model
-// 
+//
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
 module.exports = function (app) {
@@ -28,7 +28,12 @@ module.exports = function (app) {
           type: mongooseClient.Schema.Types.ObjectId,
           ref: 'menu-item-statuses',
           required: true
-        }
+        },
+        itemCancellation: {
+          canceled: { type: Boolean, default: false },
+          owner: { type: String, required: false }
+        },
+        comment: { type: String, required: false }
       }
     ],
     createdAt: { type: Date, default: Date.now },
