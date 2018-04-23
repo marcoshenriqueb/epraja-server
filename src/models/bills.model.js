@@ -29,10 +29,8 @@ module.exports = function (app) {
           ref: 'menu-item-statuses',
           required: true
         },
-        itemCancellation: {
-          canceled: { type: Boolean, default: false },
-          owner: { type: String, required: false }
-        },
+        canceled: { type: Boolean, default: false },
+        canceledOwner: { type: String, required: false },
         comment: { type: String, required: false }
       }
     ],
