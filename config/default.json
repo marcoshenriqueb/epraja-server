@@ -30,5 +30,5 @@
       "passwordField": "password"
     }
   },
-  "mongodb": "mongodb://mongo:27017/tapster"
+  "mongodb": "mongodb://mongo:27017/epraja"
 }
