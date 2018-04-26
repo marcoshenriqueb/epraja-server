@@ -31,7 +31,10 @@ module.exports = function (app) {
         },
         canceled: { type: Boolean, default: false },
         canceledOwner: { type: String, required: false },
-        comment: { type: String, required: false }
+        comment: { type: String, required: false },
+        createdAt: { type: Date, default: Date.now },
+        forwardedAt: { type: Date, required: false },
+        deliveredAt: { type: Date, required: false },
       }
     ],
     createdAt: { type: Date, default: Date.now },
