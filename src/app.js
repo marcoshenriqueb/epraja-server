@@ -42,7 +42,10 @@ app.use('/', feathers.static(app.get('public')));
 app.configure(hooks());
 app.configure(mongoose);
 app.configure(rest());
-app.configure(socketio());
+app.configure(socketio({
+  pingInterval: 20000,
+  pingTimeout: 40000
+}));
 
 app.use(function(req, res, next) {
   req.feathers.files = req.files || {};
