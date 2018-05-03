@@ -1,7 +1,7 @@
 version: '3'
 services:
     backend:
-        image: marcoshenriqueb/tapster-feathers
+        image: marcoshenriqueb/epraja-backend
         environment:
             NODE_ENV: "production"
         ports:
@@ -10,7 +10,9 @@ services:
         image: mongo
         volumes:
             - ~/.mongodb:/data/db
+        ports:
+            - "27017:27017"
     nginx:
-        image: marcoshenriqueb/tapster-nginx
+        image: marcoshenriqueb/epraja-frontend
         ports:
             - "80:80"
