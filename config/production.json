@@ -30,5 +30,5 @@
       "passwordField": "password"
     }
   },
-  "mongodb": "mongodb://mongo:27017/epraja"
+  "mongodb": "mongodb://sylvia:epraja2017@mongo:27017/epraja"
 }

@@ -11,8 +11,8 @@ services:
         volumes:
             - ~/.mongodb:/data/db
         environment:
-            MONGO_INITDB_ROOT_USERNAME: "sylvia"
-            MONGO_INITDB_ROOT_PASSWORD: "epraja2017"
+            MONGO_INITDB_ROOT_USERNAME: sylvia
+            MONGO_INITDB_ROOT_PASSWORD: epraja2017
         ports:
             - "27017:27017"
     nginx:
